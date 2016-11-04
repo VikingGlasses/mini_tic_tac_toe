@@ -23,6 +23,7 @@ public class MiniTicTacToe {
 		int numberOfSquares = board.length * board[0].length;
 		String currentMove;
 		char currentPlayer;
+		int index, row, col;
 		
 		System.out.println("Welcome to Tic Tac Toe");
 		while (playing) {
@@ -30,9 +31,12 @@ public class MiniTicTacToe {
 			for (int turn = 0; turn < numberOfSquares; turn++) {
 				printBoard();
 				currentPlayer = whosTurn(turn);
-				System.out.print(currentPlayer + "'s turn to make a move: ");
-				currentMove = getMove();
-				if (hasWon(currentMove)) {
+				currentMove = getMove(currentPlayer + "'s turn to make a move: ");
+				index = currentMove.indexOf(',');
+				row = Integer.parseInt(currentMove.substring(0, index));
+				col = Integer.parseInt(currentMove.substring(index + 1));
+				board[row][col] = currentPlayer;
+				if (hasWon(row, col)) {
 					System.out.println(currentPlayer + "has won.");
 					break; // for loop
 				} else if (turn == numberOfSquares) {
@@ -62,14 +66,63 @@ public class MiniTicTacToe {
 		return false;
 	}
 
-	private boolean hasWon(String currentMove) {
+	private boolean hasWon(int row, int col) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	private String getMove() {
+	private String getMove(String anouncement) {
 		// TODO Implement getMove()
-		return null;
+		String input = "";
+		while (!validMove(input)) {
+			System.out.print(anouncement);
+			input = keyboard.nextLine();
+		}
+		return input;
+	}
+
+	private boolean validMove(String input) {
+		// TODO Auto-generated method stub
+		// input = 12,14
+		String temp = "";
+		int indexOfComma;
+		String row, col;
+		int rowNr, colNr;
+		temp = input;
+		if (temp.length() < 3) {
+			return false;
+		}
+		temp = temp.replace(' ', '\u0000'); // replaces whitespace with the empty char ''
+		indexOfComma = temp.indexOf(',');
+		if (indexOfComma == -1) {
+			return false;
+		}
+		row = temp.substring(0, indexOfComma);
+		col = temp.substring(indexOfComma + 1);
+		if (isNumber(row) && isNumber(col)) {
+			rowNr = Integer.parseInt(row);
+			colNr = Integer.parseInt(col);
+		} else {
+			return false;
+		}
+		if (rowNr < 0 || colNr < 0) {
+			return false;
+		}
+		if (rowNr >= board.length || colNr >= board[0].length) {
+			return false;
+		}
+		if (board[rowNr][colNr] != EMPTY) {
+			return false;
+		}
+		return true;
+	}
+
+	private boolean isNumber(String number) {
+		try {
+			Integer.parseInt(number);
+			return true;
+		} catch (NumberFormatException e) { }
+		return false;
 	}
 
 	private char whosTurn(int turn) {
