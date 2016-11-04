@@ -75,15 +75,14 @@ public class MiniTicTacToe {
 		return null;
 	}
 
-	private String whosTurn(int turn) {
-		String str = "";
+	private char whosTurn(int turn) {
+		char ch;
 		if (turn % 2 == 0) {
-			str += X;
+			ch = X;
 		} else {
-			str += O;
+			ch = O;
 		}
-		str += "'s turn to make a move: ";
-		return str;
+		return ch;
 	}
 
 	private String printBoard() {
