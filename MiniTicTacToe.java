@@ -39,6 +39,7 @@ public class MiniTicTacToe {
 				// IF winning move
 				if (winner(currentMove)) {
 					// TODO print winner
+					System.out.println(currentPlayer + "has won.");
 					break; // for loop
 				} else if (turn == numberOfSquares) {
 					// TODO print draw message
