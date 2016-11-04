@@ -28,11 +28,11 @@ public class MiniTicTacToe {
 		while (playing) {
 			//   --take turn loop--
 			for (int turn = 0; turn < numberOfSquares; turn++) {
-				//     print board
+				// print board
 				printBoard();
-				//     print 'X' or 'O' turn to move
-				printTurn(turn);
-				//     make a move
+				// print 'X' or 'O' turn to move
+				printWhosTurn(turn);
+				// make a move
 				currentMove = getMove();
 				//     IF winning move
 				if (winner(currentMove)) {
@@ -59,7 +59,7 @@ public class MiniTicTacToe {
 		return null;
 	}
 
-	private void printTurn(int turn) {
+	private void printWhosTurn(int turn) {
 		// TODO Auto-generated method stub
 		
 	}
