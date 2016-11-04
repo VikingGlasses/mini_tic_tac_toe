@@ -24,25 +24,19 @@ public class MiniTicTacToe {
 		String currentMove;
 		char currentPlayer;
 		
-		// TODO print welcome message
 		System.out.println("Welcome to Tic Tac Toe");
 		while (playing) {
 			
 			for (int turn = 0; turn < numberOfSquares; turn++) {
-				// print board
 				printBoard();
-				// print 'X' or 'O' turn to move
 				currentPlayer = whosTurn(turn);
 				System.out.print(currentPlayer + "'s turn to make a move: ");
-				// make a move
 				currentMove = getMove();
-				// IF winning move
-				if (winner(currentMove)) {
-					// TODO print winner
+				if (hasWon(currentMove)) {
 					System.out.println(currentPlayer + "has won.");
 					break; // for loop
 				} else if (turn == numberOfSquares) {
-					// TODO print draw message
+					System.out.println("Stalemate!");
 				}
 			}
 			if (playingAgain()) {
@@ -68,7 +62,7 @@ public class MiniTicTacToe {
 		return false;
 	}
 
-	private boolean winner(String currentMove) {
+	private boolean hasWon(String currentMove) {
 		// TODO Auto-generated method stub
 		return false;
 	}
