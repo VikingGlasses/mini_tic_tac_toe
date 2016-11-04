@@ -5,6 +5,7 @@ public class MiniTicTacToe {
 	public static final char X = 'X';
 	public static final char O = 'O';
 	public static final char EMPTY = ' ';
+	public static final int DEFUALT_SIZE = 3;
 	
 	private char[][] board;
 	private Scanner keyboard;
@@ -52,7 +53,11 @@ public class MiniTicTacToe {
 	}
 
 	private void resetBoard() {
-		board = initiateBoard();
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board[row].length; col++) {
+				board[row][col] = EMPTY;
+			}
+		}
 	}
 
 	private boolean playingAgain() {
@@ -66,7 +71,7 @@ public class MiniTicTacToe {
 	}
 
 	private String getMove() {
-		// TODO Auto-generated method stub
+		// TODO Implement getMove()
 		return null;
 	}
 
@@ -96,7 +101,7 @@ public class MiniTicTacToe {
 	}
 
 	private char[][] initiateBoard() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
