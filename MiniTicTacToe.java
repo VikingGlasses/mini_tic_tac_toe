@@ -18,7 +18,7 @@ public class MiniTicTacToe {
 	private void run() {
 		
 		keyboard = new Scanner(System.in);
-		board = initiateBoard();
+		board = initiateBoard(DEFUALT_SIZE, DEFUALT_SIZE);
 		boolean playing = true;
 		int numberOfSquares = board.length * board[0].length;
 		String currentMove;
@@ -100,9 +100,8 @@ public class MiniTicTacToe {
 		return result;
 	}
 
-	private char[][] initiateBoard() {
-		
-		return null;
+	private char[][] initiateBoard(int numberOfRows, int numberOfColumns) {
+		return new char[numberOfRows][numberOfRows];
 	}
 
 }
