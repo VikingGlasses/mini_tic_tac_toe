@@ -72,7 +72,6 @@ public class MiniTicTacToe {
 	}
 
 	private String getMove(String anouncement) {
-		// TODO Implement getMove()
 		String input = "";
 		while (!validMove(input)) {
 			System.out.print(anouncement);
@@ -82,8 +81,6 @@ public class MiniTicTacToe {
 	}
 
 	private boolean validMove(String input) {
-		// TODO Auto-generated method stub
-		// input = 12,14
 		String temp = "";
 		int indexOfComma;
 		String row, col;
