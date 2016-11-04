@@ -22,6 +22,7 @@ public class MiniTicTacToe {
 		boolean playing = true;
 		int numberOfSquares = board.length * board[0].length;
 		String currentMove;
+		char currentPlayer;
 		
 		// TODO print welcome message
 		System.out.println("Welcome to Tic Tac Toe");
@@ -31,7 +32,8 @@ public class MiniTicTacToe {
 				// print board
 				printBoard();
 				// print 'X' or 'O' turn to move
-				whosTurn(turn);
+				currentPlayer = whosTurn(turn);
+				System.out.print(currentPlayer + "'s turn to make a move: ");
 				// make a move
 				currentMove = getMove();
 				// IF winning move
