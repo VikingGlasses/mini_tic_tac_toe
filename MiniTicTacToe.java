@@ -24,29 +24,40 @@ public class MiniTicTacToe {
 		
 		// TODO print welcome message
 		System.out.println("Welcome to Tic Tac Toe");
-		// --loop-- 
 		while (playing) {
-			//   --take turn loop--
+			
 			for (int turn = 0; turn < numberOfSquares; turn++) {
 				// print board
 				printBoard();
 				// print 'X' or 'O' turn to move
-				printWhosTurn(turn);
+				whosTurn(turn);
 				// make a move
 				currentMove = getMove();
-				//     IF winning move
+				// IF winning move
 				if (winner(currentMove)) {
-					//       break turn loop
-					// print winner
-					break;
+					// TODO print winner
+					break; // for loop
 				} else if (turn == numberOfSquares) {
-					// print draw message
+					// TODO print draw message
 				}
 			}
-			//   --END turn loop--
+			if (playingAgain()) {
+				resetBoard();
+			} else {
+				playing = false;
+			}
+			
 		}
-		// --END loop--
 		
+	}
+
+	private void resetBoard() {
+		board = initiateBoard();
+	}
+
+	private boolean playingAgain() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	private boolean winner(String currentMove) {
@@ -59,14 +70,29 @@ public class MiniTicTacToe {
 		return null;
 	}
 
-	private void printWhosTurn(int turn) {
-		// TODO Auto-generated method stub
-		
+	private String whosTurn(int turn) {
+		String str = "";
+		if (turn % 2 == 0) {
+			str += X;
+		} else {
+			str += O;
+		}
+		str += "'s turn to make a move: ";
+		return str;
 	}
 
-	private void printBoard() {
-		// TODO Auto-generated method stub
-		
+	private String printBoard() {
+		String result = "";
+		for (int row = 0; row < board.length; row++) {
+			result += "+-----+\n";
+			result += "|";
+			for (int col = 0; col < board[row].length; col++) {
+				result += board[row][col] + "|";
+			}
+			result += "\n";
+		}
+		result += "+-----+";
+		return result;
 	}
 
 	private char[][] initiateBoard() {
